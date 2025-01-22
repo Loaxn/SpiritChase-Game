@@ -122,9 +122,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49917717ba461644aaf1f1892cc83835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2.74
+  _speed: 20
   rgbd: {fileID: 1086271588468464791}
-  jumpHeight: 1
+  jumpHeight: 4
 --- !u!54 &1086271588468464791
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -150,7 +150,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 64
+  m_Constraints: 72
   m_CollisionDetection: 0
 --- !u!114 &7618782157679009579
 MonoBehaviour:

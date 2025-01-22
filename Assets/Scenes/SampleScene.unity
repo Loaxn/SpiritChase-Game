@@ -818,11 +818,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2527108369658922431, guid: 23cbc34d5bd7bd4429ffc0f65fe6dc91, type: 3}
       propertyPath: _speed
-      value: 0.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2527108369658922431, guid: 23cbc34d5bd7bd4429ffc0f65fe6dc91, type: 3}
       propertyPath: jumpHeight
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2536353506038688980, guid: 23cbc34d5bd7bd4429ffc0f65fe6dc91, type: 3}
       propertyPath: m_LocalScale.x
@@ -882,7 +882,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3393618136373857991, guid: 23cbc34d5bd7bd4429ffc0f65fe6dc91, type: 3}
       propertyPath: m_Name
-      value: Capsule
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393618136373857991, guid: 23cbc34d5bd7bd4429ffc0f65fe6dc91, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
