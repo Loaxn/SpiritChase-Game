@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float _speed = 0.1f; // Vitesse de déplacement du joueur
+    [SerializeField] private float _speed = 0.1f; // Exemple de valeur par défaut                                               // Vitesse de déplacement du joueur
     [SerializeField] private Rigidbody rgbd;       // Composant Rigidbody pour gérer les mouvements physiques
     [SerializeField] private float jumpHeight;     // Hauteur du saut pour le joueur
 
@@ -16,20 +16,15 @@ public class PlayerController : MonoBehaviour
     // Start est appelé au début de l'exécution
     private void Start()
     {
-        // Affiche la valeur de _speed récupérée depuis l'inspecteur pour vérifier si elle est correcte
-        Debug.Log("Speed from Inspector at Start: " + _speed);
-        Move();
-
+        Debug.Log("Speed from Inspector: " + _speed);
     }
 
-    // Update est appelé une fois par frame, utilisé pour les mises à jour en temps réel
+
+    // FixedUpdate est appelé à intervalles réguliers, utilisé pour les mises à jour liées à la physique
     private void Update()
     {
-        // Affiche la valeur mise à jour de la vitesse
-        Debug.Log("Updated Speed: " + _speed);
+        Move(); // Gère les déplacements du joueur
 
-        // Appel à la méthode Move qui gère le déplacement
-        Move();
     }
 
     #region Lecture des entrées
@@ -60,11 +55,12 @@ public class PlayerController : MonoBehaviour
 
             // Déplace le Rigidbody de façon physique
             rgbd.MovePosition(rgbd.position + moveDirection);
-
-            // Affiche les valeurs de déplacement et de vitesse
-            Debug.Log("MoveVector: " + MoveVector + ", Speed: " + _speed);
+     
         }
+        Debug.Log("MoveVector: " + MoveVector + ", Speed: " + _speed);
+
     }
+
 
     // Gère le saut du joueur
     private void Jumpp()
