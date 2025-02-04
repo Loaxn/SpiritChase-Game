@@ -5,10 +5,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerRespawnManager : MonoBehaviour
 {
-    // This is a message that we can set in the Inspector, not really used in this code yet, but might be useful later
     [SerializeField] private string m_MyMessage;
 
-    // This is the threshold for how low the player can fall before respawning
+    // how low the player can fall before respawning
     [SerializeField] private float m_Threshold;
 
     // Store the starting position of the player for respawning
@@ -38,10 +37,9 @@ public class PlayerRespawnManager : MonoBehaviour
         m_Origin = transform.position;
     }
 
-    // This gets called every frame
     void Update()
     {
-        // Check if the player falls below the threshold (so we can respawn them)
+        // Check if the player falls below the threshold 
         if (transform.position.y < m_Threshold)
         {
             Debug.Log("GameOver"); // Print out GameOver to the console
