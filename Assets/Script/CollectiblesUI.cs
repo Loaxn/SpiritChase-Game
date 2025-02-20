@@ -6,7 +6,7 @@ using TMPro; // Import the TextMeshPro namespace to work with UI text elements
 // This script updates the UI to display the number of collected crystals
 public class CollectiblesUI : MonoBehaviour
 {
-    // Reference to the TextMeshProUGUI component that displays the crystal count
+    //component that displays the crystal count
     private TextMeshProUGUI crystalsText;
 
     // Start is called before the first frame update

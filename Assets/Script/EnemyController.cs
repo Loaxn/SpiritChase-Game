@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBehaviour : MonoBehaviour
+
+//NOT SURE OF THIS 
+public class EnemyController : MonoBehaviour
 {
     public Transform pointA;  // Premier point de patrouille
     public Transform pointB;  // Deuxième point de patrouille

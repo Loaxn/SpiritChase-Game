@@ -5,71 +5,70 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float _speed = 0.1f; // Exemple de valeur par défaut                                               // Vitesse de déplacement du joueur
-    [SerializeField] private Rigidbody rgbd;       // Composant Rigidbody pour gérer les mouvements physiques
-    [SerializeField] private float jumpHeight;     // Hauteur du saut pour le joueur
+    [SerializeField] private float _speed = 0.1f; // Player's movement speed
+    [SerializeField] private Rigidbody rgbd;       // The Rigidbody component used for physics-based movement
+    [SerializeField] private float jumpHeight;     // The height of the jump 
 
-    // Champs privés pour les déplacements et les sauts
-    private Vector2 MoveVector; // Stocke l'entrée de mouvement du joueur (axe X et Y)
-    private bool Jump;          // Indique si le joueur tente de sauter
+    // Private fields for movement and jumping
+    private Vector2 MoveVector; 
+    private bool Jump;          
 
-    // Start est appelé au début de l'exécution
+    // Start is called once when the game starts 
     private void Start()
     {
-        Debug.Log("Speed from Inspector: " + _speed);
+        //Debug.Log("Speed from Inspector: " + _speed); 
     }
 
-
-    // FixedUpdate est appelé à intervalles réguliers, utilisé pour les mises à jour liées à la physique
+    
     private void Update()
     {
-        Move(); // Gère les déplacements du joueur
-
+        Move(); // Calling the movement function 
     }
 
-    #region Lecture des entrées
-    // Lecture des entrées pour le mouvement via le système Input
+    // Reads movement input using the new Input System
     public void ReadMoveInput(InputAction.CallbackContext context)
     {
-        MoveVector = context.ReadValue<Vector2>(); // Récupère le vecteur de déplacement (entrée en X et Y)
+        MoveVector = context.ReadValue<Vector2>(); // Getting the movement vector (X and Y)
     }
 
-    // Lecture des entrées pour le saut via le système Input
+    // Reads jump input from the new Input System
     public void ReadJumpInput(InputAction.CallbackContext context)
     {
-        Jump = context.ReadValue<float>() > 0.1f; // Vérifie si la touche de saut est pressée (valeur > 0.1)
-        Jumpp();                                 // Appelle la méthode de saut
+        Jump = context.ReadValue<float>() > 0.1f; // If the jump button is pressed (> 0.1), set Jump to true
+        Jumpp(); // Call the jump function 
     }
-    #endregion
+   
 
-    // Gère le déplacement du joueur
+
+
+    // Handles player movement
     private void Move()
     {
-        // Calcule la direction du mouvement
+        // Creating a movement direction vector
         Vector3 direction = new Vector3(MoveVector.x, 0f, MoveVector.y).normalized;
 
-        if (direction.magnitude >= 0.1f) // Vérifie si une entrée significative est présente
+        if (direction.magnitude >= 0.1f) // Only move if the player is actually pressing something
         {
-            // Calcule la nouvelle position en fonction de la vitesse
+            // Calculate new position based on speed
             Vector3 moveDirection = direction * _speed * Time.deltaTime;
 
-            // Déplace le Rigidbody de façon physique
+            // Move the Rigidbody to simulate movement with physics
             rgbd.MovePosition(rgbd.position + moveDirection);
-     
         }
-        Debug.Log("MoveVector: " + MoveVector + ", Speed: " + _speed);
 
+        Debug.Log("MoveVector: " + MoveVector + ", Speed: " + _speed); // Debugging movement 
     }
 
 
-    // Gère le saut du joueur
+
+    // Handles the player's jump
     private void Jumpp()
     {
-        // Vérifie si le joueur tente de sauter et s'il est au sol (velocity.y proche de 0)
+        // Checking if the player is pressing jump and if they are on the ground 
         if (Jump && Mathf.Abs(rgbd.velocity.y) < 0.01f)
         {
-            Debug.Log("Jumping"); // Affiche dans la console que le joueur saute (pour le débogage)
-            // Applique une force vers le haut pour simuler un saut, en fonction de la hauteur de saut et de la gravité
+            Debug.Log("Jumping!"); // Just to check if the jump function is actually called
+            // Applying force upwards to make the player jump, using physics gravity calculations
             rgbd.AddForce(Vector3.up * Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y), ForceMode.VelocityChange);
         }
     }

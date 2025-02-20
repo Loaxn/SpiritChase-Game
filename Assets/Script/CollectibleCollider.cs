@@ -14,7 +14,7 @@ public class CollectibleCollider : MonoBehaviour
         if (playerCollectibles != null)
         {
             playerCollectibles.CristalsCollected(); // Add to the player's crystal count
-            Destroy(gameObject); //  removes the collectible
+            Destroy(gameObject); //  destroy the collectible
         }
     }
 

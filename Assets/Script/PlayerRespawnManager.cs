@@ -5,16 +5,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerRespawnManager : MonoBehaviour
 {
-    [SerializeField] private string m_MyMessage;
-
-    // how low the player can fall before respawning
-    [SerializeField] private float m_Threshold;
-
-    // Store the starting position of the player for respawning
+    [SerializeField] private string m_MyMessage;// how low the player can fall before respawning
+    [SerializeField] private float m_Threshold; // Store the starting position of the player 
     Vector3 m_Origin;
-
     // This is the player controller that will help control the player’s movements
     PlayerController m_PlayerController;
+
 
     // Property to get the message, but we can't change it from outside the class
     public string MyMessage
@@ -42,7 +38,7 @@ public class PlayerRespawnManager : MonoBehaviour
         // Check if the player falls below the threshold 
         if (transform.position.y < m_Threshold)
         {
-            Debug.Log("GameOver"); // Print out GameOver to the console
+            //Debug.Log("GameOver"); 
             Respawn(); // Call the respawn function
         }
     }
@@ -50,7 +46,7 @@ public class PlayerRespawnManager : MonoBehaviour
     // This is called when the player presses a button to respawn (input from the player)
     public void OnRespawn(InputValue value)
     {
-        Debug.Log("On Respawn"); // Print that respawn was triggered
+        //Debug.Log("On Respawn");
         Respawn(); // Call the respawn function
     }
 
@@ -65,6 +61,6 @@ public class PlayerRespawnManager : MonoBehaviour
     // This gets called at a fixed time (used for physics updates, but here we just print something)
     private void FixedUpdate()
     {
-        Debug.Log("FixedUpdate " + Time.deltaTime); // Just printing out how much time has passed in this fixed update
+        //Debug.Log("FixedUpdate " + Time.deltaTime); 
     }
 }
