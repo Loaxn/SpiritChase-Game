@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Mainmenu : MonoBehaviour
-{
+{  
+    //load scene
     public void PlayButton()
     {
         SceneManager.LoadScene("MainGame");
